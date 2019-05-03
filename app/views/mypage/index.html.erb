@@ -1,0 +1,52 @@
+<section class="section">
+  <div class="container">
+    <div>
+      このサイトは画像掲示板です。<br>
+      閲覧者、制作者の交流と投稿内容および画像の引用を行いやすい文字コラ専用の画像掲示板を目指しています。<br>
+    </div>
+    <br>
+    <nav class="panel">
+      <p class="panel-heading" style="background-color: black">
+        <span style="color:white">使い方</span>
+      </p>
+      <div class="panel-block" style="background-color: white">
+        <div class="container">
+          トップページおよびスレッド内のページ上にある画面右下のボタンを押すと投稿フォームが表示され投稿が行えます。<br>
+          投稿は通常の画像掲示板のように行えますが、当サイトでは加えて２つのテーマに特化した掲示板となっています。<br>
+          <br>
+          <div class="notification title is-5">
+            画像内の文字を検索可能
+          </div>
+
+          <div style="padding: 0px 20px;">
+            月に<%= Settings.api.max_num_of_use %>枚までの投稿画像を解析し、画像内の文章を検索対象とすることができます。<br>
+            ただし、解析には限度があり特に文字の背景に模様がついていたり専用フォントを使用していると正しく解析できない場合があります。（その場合でも部分的に解析を行います）<br>
+            <%= Settings.api.max_num_of_use %>枚を超えた場合、画像内文字の検索対象にはならなくなりますが投稿は可能です。<br>
+            投稿後に好きな画像を探しやすくするための仕組みです。<br>
+            <br>
+            <%= image_tag("howtoimage.jpg", size: '500x500') %>
+            <br><br>
+          </div>
+          <div class="notification title is-5">
+            スレッドの枠を超えたレス機能
+          </div>
+          <div style="padding: 0px 20px;">
+            「>>1」の記述をつけるだけで投稿に返信を行うことができます。<br>
+            このとき、返信された投稿にはマークがつくため、自分の投稿に返信されたかを一目で確認できます。<br>
+            これは他のスレッドの投稿に対しても行えます。そのため過去に投稿された内容や画像を引用しやすくします。<br>
+            例えば、文字コラの依頼用スレッドや制作用スレッドが分かれていたとき、依頼に返信されたことがわかります。<br>
+            投稿者間のやりとりや依頼者と制作者間の交流を行いやすくするための仕組みです。<br>
+            <br>
+            <%= image_tag("howtoreply.jpg", size: '500x500') %>
+          </div>
+
+
+        </div>
+      </div>
+    </nav>
+    <p>
+      <%= link_to '戻る', topics_path, class: "button" %>
+    </p>
+  </div>
+</section>
+

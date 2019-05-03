@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= analytics_init if Rails.env.production? %>
+    <title>文字画像掲示板</title>
+    <!-- TODO: タイトル受け渡しの一般化 -->
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body>
+    <%= render 'layouts/header' %>
+    <%= breadcrumbs pretext: "", separator: " &rsaquo; "%>
+
+    <%= yield %>
+    <%#= debug(params) if Rails.env.development? %>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<div>
+  <% breadcrumb :post, @post %>
+</div>
+
+<%= render 'topics/blueimp' %>
+
+<section class="section">
+  <div class="container">
+    <div class="box">
+      <%= render 'post', post: @post, show_page: true %>
+
+      <% if @post.followers.present? %>
+        <% @post.followers.each do |follower| %>
+          <%= render 'post', post: follower, show_page: true %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <p>
+      <%= link_to '戻る', topic_path(@post.topic), class: "button" %>
+    </p>
+  </div>
+</section>
+
+<%= render 'post_script' %>

@@ -1,0 +1,7 @@
+<%= search_form_for @search, url:search_path do |f| %>
+  <div class="form-group">
+    <%= f.label :body_cont, "内容" %>
+    <%= f.text_field :body_cont, class: "form-control" %>
+  </div>
+  <div class="actions"><%= f.submit "検索" %></div>
+<% end %>

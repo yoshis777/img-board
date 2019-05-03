@@ -1,0 +1,14 @@
+api:
+  max_num_of_use: 500
+topics:
+  page_num: 12
+posts:
+  max_post_num: 100
+  search_page_num: 20
+  messages:
+    deleted: '投稿を削除しました。'
+errors:
+  topic_create_title: '以下の理由で、投稿できませんでした。'
+  post_create_title: '以下の理由で、投稿できませんでした。'
+  post_update_title: '以下の理由で、編集できませんでした。'
+  magick_byte: '画像ファイルを処理できませんでした。画像を確認してください。'

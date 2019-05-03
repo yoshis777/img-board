@@ -1,0 +1,56 @@
+<%= form_for(@topic) do |f| %>
+  <header class="modal-card-head">
+    <p class="modal-card-title", style="color: black;">新規スレッド作成</p>
+    <button type="button" class="delete close" aria-label="close"></button>
+  </header>
+
+  <section class="modal-card-body modal-card-height">
+    <div class="field is-horizontal">
+      <div class="field-body">
+        <div class="field">
+          <%= f.label :title, 'タイトル', class:"label" %>
+          <p class="control is-expanded">
+            <%= f.text_field :title, class: 'form-control input' %>
+          </p>
+        </div>
+
+        <div class="field">
+          <%= f.label :name, '投稿者', class:"label" %>
+          <p class="control is-expanded">
+            <%= f.text_field :name, class: 'form-control input' %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <%= f.fields_for :posts do |p| %>
+      <div class="field">
+        <%= p.label :password, 'パスワード（記事の編集・削除時に使用）', class:"label" %>
+        <p class="control is-expanded">
+          <%= p.password_field :password, class: 'form-control input' %>
+        </p>
+      </div>
+      <div class="field">
+        <%= p.label :body, '本文', class:"label" %>
+        <div class="control">
+          <%= p.text_area :body, class: 'form-control textarea', rows: '10' %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= p.label :images, '画像', class:"label" %>
+        <div class="control">
+          <%= p.file_field :images, multiple: true, accept: 'image/jpeg,image/gif,image/png', id: 'fileUpload' %>
+          <div id="preview"></div>
+        </div>
+      </div>
+    <% end %>
+
+  </section>
+  <footer class="modal-card-foot">
+    <div class="control">
+      <%= f.submit 'スレッド生成', class: "button is-link" %>
+      <button type="button" class="button close">Cancel</button>
+    </div>
+  </footer>
+<% end %>

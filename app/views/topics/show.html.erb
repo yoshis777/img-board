@@ -1,0 +1,31 @@
+<div>
+  <% breadcrumb :topic, @topic %>
+</div>
+
+<%= render 'blueimp' %>
+
+<section class="section">
+  <div class="container">
+  </div>
+  <div class="container">
+    <h3 class="title is-3"><%= @topic.title %></h3>
+
+    <%= render 'layouts/flash' %>
+
+    <div class="box">
+      <% @posts.each do |post| %>
+        <%= render post %>
+      <% end %>
+    </div>
+
+    <p>
+      <%= link_to '戻る', topics_path, class: "button" %>
+    </p>
+
+  </div>
+</section>
+
+<%= render 'shared/modal_create' %>
+
+<%= render 'posts/post_script' %>
+

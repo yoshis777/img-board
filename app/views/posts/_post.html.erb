@@ -1,0 +1,39 @@
+<article class="media">
+  <div class="media-content">
+    <div class="content">
+      <div style="<% if !defined? search_page %>float:left<% end %>">
+        <strong><%= post.id %>. <%= post.name %></strong> <small><%= l(timezone(post.created_at), format: :long) %></small>
+        <% unless defined? show_page %>
+            <%= link_to "[返信]", 'javascript:void(0)', class:"reply_to", id: "reply_to_" + post.id.to_s %>
+          <% if post.followers.present? %>
+            &nbsp;<%= link_to "レスあり", post, class: "tag is-link", style: "float: right;" %>
+          <% end %>
+        <% end %>
+        <% if defined? show_page %>
+          <% if post.topic.present? %>
+            from <%= link_to post.topic.title, post.topic %>
+          <% end %>
+        <% end %>
+      </div>
+      <% if !defined? search_page %>
+        <div style="text-align: right">
+          <%= link_to '[編集]', edit_post_path(post) %>
+        </div>
+      <% end %>
+    </div>
+    <div class="columns">
+      <div class="column">
+        <%= body_format(post.body) %>
+      </div>
+      <div class="column is-two-fifths">
+        <div id="blueimp-gallary-<%= post.id %>" class="blueimp-gallary-images">
+          <% post.images.each do |image| %>
+            <%= link_to image.url, data: {originalimage: image.url} do %>
+              <%= lazy_image_tag image.thumb.url if image.thumb.present? %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

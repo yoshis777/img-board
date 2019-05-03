@@ -1,0 +1,39 @@
+ja:
+  activerecord:
+    models:
+      topic: スレッド
+      post: 投稿
+    attributes:
+      topic:
+        title: タイトル
+        name: 投稿者名
+      topic/posts:
+        name: 投稿者名
+        body: 内容
+        images: 画像
+      post:
+        name: 投稿者名
+        body: 内容
+        images: 画像
+        password: パスワード
+        image_descriptions: 画像解析
+  date:
+    formats:
+      default: ! '%Y/%m/%d'
+      long: ! '%Y年%m月%d日(%a)'
+      short: ! '%m/%d'
+  views:
+    pagination:
+      previous: "<< 前ページ"
+      next: "次ページ >>"
+      truncate: "..."
+  errors:
+    messages:
+      carrierwave_processing_error: 処理できませんでした
+      carrierwave_integrity_error: は許可されていないファイルタイプです
+      carrierwave_download_error: はダウンロードできません
+      extension_white_list_error: "%{extension}ファイルのアップロードは許可されていません。"
+      extension_black_list_error: "%{extension}ファイルのアップロードは許可されていません。"
+      rmagick_processing_error: "ファイルを処理できませんでした。画像を確認してください。"
+      mime_types_processing_error: "ファイルを処理できませんでした。Content-Typeを確認してください。"
+      mini_magick_processing_error: "ファイルを処理できませんでした。画像を確認してください。"

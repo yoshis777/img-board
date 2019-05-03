@@ -1,0 +1,82 @@
+<script type="text/javascript">
+    $(function () {
+        $('img.lazy').lazyload();
+    });
+    $('#post_images').bind('change', function() {
+        var size_in_megabytes = 2 * 1024 * 1024;
+        var exceededImages = [];
+        $.each(this.files, function(){
+            if(this.size > size_in_megabytes) {
+                exceededImages.push(this);
+            }
+        });
+
+        if (exceededImages.length > 0) {
+            var error_message = "2MB以下の画像を3枚まで投稿できます。\n以下の画像はサイズが超過しています。";
+            $.each(exceededImages, function() {
+                error_message += "\n";
+                error_message += this.name
+            });
+            alert(error_message);
+        }
+    });
+    $('.reply_to').click(function(){
+        var postId = $(this).attr('id');
+        if (postId) {
+            postId = postId.replace("reply_to_", ">>");
+
+            addReplyAnchar(postId);
+
+            openModal('.modal', 'create-modal');
+        }
+    });
+
+    function addReplyAnchar(postId) {
+        var addText = postId;
+        var getData = String($('#post_body').val());
+        if (getData) {
+            $('#post_body').val(getData + "\n" + addText + "\n");
+        }else {
+            $('#post_body').val(addText + "\n");
+        }
+    }
+
+    $('.blueimp-gallary-images').click(function(event){
+        var id = $(this).attr('id');
+        openGallary(id, event);
+    });
+
+    function openGallary(id, event) {
+        event = event || window.event;
+        var target = event.target || event.srcElement,
+            link = target.src ? target.parentNode : target,
+            options = {index: link, event: event, preloadRange: 0, closeOnEscape: false,
+                onslide: function (index, slide) {
+                    var text = this.list[index].getAttribute('data-originalimage'),
+                        node = this.container.find('.originalimage');
+                    node.empty();
+                    if (text) {
+                        var imageLink = document.createElement("a");
+                        imageLink.setAttribute("href", text);
+                        imageLink.setAttribute("target", "_blank");
+                        var linkButton = document.createElement("button");
+                        linkButton.onclick = function(){
+                            if($('#blueimp-gallery').is(':visible')){
+                                if(window.gallary){
+                                    window.gallary.close();
+                                    window.gallary = undefined;
+                                }
+                            }
+                        };
+                        linkButton.className = "button";
+                        linkButton.innerText = "元画像";
+                        imageLink.appendChild(linkButton);
+                        node[0].appendChild(imageLink);
+                    }
+                }
+            }
+        links = $("#" + id + " > a");
+        window.gallary = blueimp.Gallery(links, options);
+    };
+
+</script>

@@ -1,0 +1,23 @@
+<div>
+  <% breadcrumb :post_edit, @post %>
+</div>
+
+<section class="section">
+  <div class="container">
+    <%= form_for(@new_post, url: edit_post_path) do |f| %>
+
+      <div class="field is-horizontal">
+        <div class="field-body">
+          <div class="field">
+            <%= f.label :password, class:"label" %>
+            <p class="control is-expanded">
+              <%= f.password_field :password, class: 'form-control input', id: 'post_authenticate' %>
+            </p>
+          </div>
+        </div>
+      </div>
+      <%= f.submit '編集', class: "button is-link" %>
+      <%= link_to '戻る', @post.topic, class: 'button' %>
+    <% end %>
+  </div>
+</section>

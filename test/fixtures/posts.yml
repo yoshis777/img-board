@@ -1,0 +1,67 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+love:
+  name: "スマブラ愛好家"
+  body: "スマブラ発売やぞ"
+  topic: smashbros
+
+hate:
+  name: "地方で一番スマブラ下手なやつ"
+  body: "やめてくれや"
+  topic: smashbros
+
+hate_will_be_following_love:
+  id: 10001
+  name: "地方で一番スマブラ下手なやつ"
+  body: "スマブラ発売されてもーた"
+  topic: smashbros
+
+love_will_be_followed_hate:
+  name: "スマブラ愛好家"
+  body: ">>10001\n一緒にやろや"
+  topic: smashbros
+
+hate_is_followed_love:
+  id: 10003
+  name: "地方で一番スマブラ下手なやつ"
+  body: "スマブラ発売されてもーた"
+  topic: smashbros
+
+love_follows_hate:
+  id: 10004
+  name: "スマブラ愛好家"
+  body: ">>10003\n一緒にやろや"
+  topic: smashbros
+
+hate_is_followed_love_1by2:
+  id: 10005
+  name: "地方で一番スマブラ下手なやつ"
+  body: "スマブラ発売されてもーた"
+  topic: smashbros
+hate_is_followed_love_2by2:
+  id: 10006
+  name: "地方で一番スマブラ下手なやつ"
+  body: "スマブラ発売されてもーた"
+  topic: smashbros
+
+love_follows_hate_2by2:
+  id: 10007
+  name: "スマブラ愛好家"
+  body: ">>10005 >>10006\n一緒にやろや"
+  topic: smashbros
+
+hate_is_followed_love_1by2_2:
+  id: 10008
+  name: "地方で一番スマブラ下手なやつ"
+  body: "スマブラ発売されてもーた"
+  topic: smashbros
+hate_is_followed_love_2by2_2:
+  id: 10009
+  name: "地方で一番スマブラ下手なやつ"
+  body: "スマブラ発売されてもーた"
+  topic: smashbros
+love_follows_hate_2by2_2:
+  id: 10010
+  name: "スマブラ愛好家"
+  body: ">>10008 >>10009\n一緒にやろや"
+  topic: smashbros

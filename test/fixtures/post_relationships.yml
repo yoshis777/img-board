@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+love_follows_hate:
+  follower_id: 10004
+  followed_id: 10003
+
+love_follows_two_hates:
+  follower_id: 10010
+  followed_id: 10008
+
+love_follows_two_hates2:
+  follower_id: 10010
+  followed_id: 10009

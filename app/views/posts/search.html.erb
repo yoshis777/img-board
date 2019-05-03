@@ -1,0 +1,38 @@
+<% if @is_searched && @posts_count > 0 %>
+  <%= render 'topics/blueimp' %>
+<% end %>
+<section class="section">
+  <div class="container">
+    <%= render 'form_search' %>
+
+    <% if @is_searched %>
+      <article class="message is-black">
+        <div class="message-body">
+          <% if @posts_count > 0 %>
+            検索結果：<%= @posts_count %>件
+          <% else %>
+            該当する検索結果がみつかりませんでした。
+          <% end %>
+        </div>
+      </article>
+    <% end %>
+
+    <% if @posts_count > 0 %>
+
+      <%= paginate @posts %>
+
+        <div class="box">
+          <% @posts.each do | post| %>
+            <%= render post, show_page: true, search_page: true %>
+          <% end %>
+        </div>
+
+       <%= paginate @posts %>
+
+    <% end %>
+    <p><%= link_to '戻る', root_path, class: 'button' %></p>
+  </div>
+</section>
+<% if @is_searched && @posts_count > 0 %>
+  <%= render 'post_script' %>
+<% end %>

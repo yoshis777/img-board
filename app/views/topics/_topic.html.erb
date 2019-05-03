@@ -1,0 +1,19 @@
+<%= link_to topic_path(topic.id), class: "column" do %>
+<div class="card">
+  <div class="card-content overflow-omission" style="padding: 1.0rem; height: 80px;">
+    <p class="title is-6"><%= topic.title %></p>
+    <p class="subtitle is-7">
+      <small>
+        <%= reply_count(topic.posts.count) %>件
+        <%= l(timezone(topic.posts.present? ? topic.posts.first.created_at : topic.created_at), format: :long) %>
+        created by <%= topic.name %>
+      </small>
+    </p>
+  </div>
+  <div class="card-image" style="opacity: 0.7">
+    <figure class="image is-3by1">
+      <%= get_last_post_image(topic) %>
+    </figure>
+  </div>
+</div>
+<% end %>

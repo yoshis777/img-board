@@ -1,0 +1,21 @@
+<% if flash["errors"].present? %>
+  <section class="section">
+    <div class="container" align="center">
+      <article class="message is-black">
+        <div class="message-header">
+          <p><%= flash["errors"]["title"] %></p>
+        </div>
+        <div class="message-body">
+          <ul>
+            <% flash["errors"]["errors"].each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="container" style="padding: 1rem">
+          <a href="#" class="button is-black" style="padding: 1rem;" onclick="javascript:window.history.back(-1);return false;">戻る</a>
+        </div>
+      </article>
+    </div>
+  </section>
+<% end %>

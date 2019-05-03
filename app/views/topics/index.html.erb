@@ -1,0 +1,25 @@
+<section class="section">
+  <div class="container" align="center">
+    <%= image_tag("title_logo.png", size: '500x500') %>
+  </div>
+  <div class="container">
+    <h1 class="title">
+    </h1>
+    <%= render 'layouts/flash' %>
+
+      <% column_num = 4.freeze %>
+      <% @topics.each_with_index do |topic, index| %>
+        <% if index % column_num == 0 %><div class="columns is-multiline is-centered"><% end %>
+
+          <%= render topic %>
+      <% if index % column_num == (column_num - 1) %></div><% end %>
+      <% end %>
+
+  </div>
+  <div class="container" style="padding: 2rem">
+    <%= paginate @topics %>
+
+    <%= render 'shared/modal_create' %>
+  </div>
+</section>
+

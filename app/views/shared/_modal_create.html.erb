@@ -1,0 +1,85 @@
+<div class="modal" id="create-modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <% case controller.action_name when "index" %>
+         <%= render 'topics/form_create' %>
+       <% when "show" %>
+         <%= render 'posts/form_create' %>
+       <% end %>
+  </div>
+</div>
+
+<script type="text/javascript">
+$(window).keyup(function(e) {
+    if(e.key === 'Escape') {
+        toggleModal('.modal', 'create-modal');
+    }
+});
+
+function showModal(modalId){
+    openModal('.modal', modalId);
+}
+
+function openModal(modal, modalId) {
+    var modalObj = $('#' + modalId + modal);
+    if(modalObj[0]){
+        if(! modalObj.hasClass('is-active')){
+            modalObj.addClass("is-active");
+
+            if(modalId === "create-modal"){
+                <% case controller.action_name when "index" %>
+                $("#topic_title").focus();
+                <% when "show" %>
+                $("#post_body").focus();
+                <% end %>
+            }
+        }
+    }
+}
+
+function closeModal(modal) {
+    if($(modal).hasClass('is-active')) {
+        $(modal).removeClass("is-active");
+    }
+}
+
+function toggleModal(modal, modalId) {
+    var gallary = '#blueimp-gallery';
+    if($(gallary).is(':visible')){
+        if(window.gallary){
+            window.gallary.close();
+            window.gallary = undefined;
+        }
+    } else {
+        if(! $(modal).hasClass('is-active')) {
+            openModal(modal, modalId);
+        } else if($(modal).hasClass('is-active')) {
+            closeModal(modal);
+        }
+    }
+}
+
+$(function(){
+    $(".close").click(function() {
+        closeModal('.modal');
+    });
+
+    $('#fileUpload').change(function() {
+        $('#preview').children().remove();
+        if(this.files && this.files.length > 0){
+            $.each(this.files, function(index, value){
+                var fr = new FileReader();
+                fr.onload = function() {
+                    var img = $('<img>').attr('src', fr.result);
+                    $('#preview').append(img);
+                };
+                fr.readAsDataURL(value);
+            })
+        }
+    });
+});
+</script>
+
+<% if (!defined? @posts) || ((defined? @posts) && @posts.count <= Settings.posts.max_post_num) %>
+  <button id="showModal" class="button is-rounded fixed_btn is-link is-large" onclick="showModal('create-modal')">+</button>
+<% end %>

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+smashbros:
+  title: スマブラの話題
+  name: もりぞー
+
+kikkoro:
+  title: とりとめもない話題
+  name: きっころ

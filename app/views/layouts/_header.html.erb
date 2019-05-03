@@ -1,0 +1,33 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <%#= link_to image_tag("title_logo.png", size: '112x28'), root_path, class: 'navbar-item' %>
+    <b><%= link_to '画像掲示板', root_path, class: 'navbar-item', style: 'color: white' %></b>
+
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+
+      <%= link_to '投稿検索', search_path, class: 'navbar-item' %>
+
+      <%= link_to 'このサイトについて', mypage_path, class: 'navbar-item' %>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="field is-grouped">
+        <% case controller.controller_name + '/' + controller.action_name when 'topics/index' %>
+          <%= render 'form_search' %>
+        <% else %>
+
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,45 @@
+<%= form_for([@topic, @post]) do |f| %>
+  <header class="modal-card-head">
+    <p class="modal-card-title", style="color: black;">返信</p>
+    <button type="button" class="delete close" aria-label="close"></button>
+  </header>
+
+  <section class="modal-card-body modal-card-height">
+    <div class="field is-horizontal">
+      <div class="field-body">
+        <div class="field">
+          <%= f.label :name, '投稿者', class:"label" %>
+          <p class="control is-expanded">
+            <%= f.text_field :name, class: 'form-control input' %>
+          </p>
+          <%= f.label :password, 'パスワード（記事の編集・削除時に使用）', class:"label" %>
+          <p class="control is-expanded">
+            <%= f.password_field :password, class: 'form-control input' %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.label :body, '本文', class:"label" %>
+      <div class="control">
+        <%= f.text_area :body, class: 'form-control textarea', rows: '10' %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.label :images, '画像', class:"label" %>
+      <div class="control">
+        <%= f.file_field :images, multiple: true, accept: 'image/jpeg,image/gif,image/png', id: 'fileUpload' %>
+        <div id="preview"></div>
+      </div>
+    </div>
+
+  </section>
+  <footer class="modal-card-foot">
+    <div class="control">
+      <%= f.submit '返信', class: "button is-link" %>
+      <button type="button" class="button close">Cancel</button>
+    </div>
+  </footer>
+<% end %>

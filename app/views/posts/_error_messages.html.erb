@@ -1,0 +1,14 @@
+<% if @post.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      <p>以下の理由で、画像が投稿できませんでした。</p>
+    </div>
+    <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+    <a href="#" onclick="javascript:window.history.back(-1);return false;">戻る</a>
+  </div>
+
+<% end %>

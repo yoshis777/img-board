@@ -1,0 +1,8 @@
+<div align="right">
+  <%= search_form_for(@search) do |f| %>
+    <%= f.text_field :title_cont, class: 'form-control input', style: 'width: 200px; height:24px;', placeholder: 'スレッドタイトル検索' %>
+    <% if @is_searched %>
+      <%= link_to 'リセット', topics_path, class: 'button', style: 'height:24px;' %>
+    <% end %>
+  <% end %>
+</div>
